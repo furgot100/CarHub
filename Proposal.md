@@ -25,7 +25,6 @@ Start coding and finish “Skateboard” feature before beginning “Bike”.
 Add comments. Possible CRUD for car sales? Add libary for vehicle makes and models. Possible use of API? Add authentication.
 
 ## Car
-ONE additional feature
 Use google api to link towards youtube videos about cars.
 
 ## Wireframes
