@@ -1,0 +1,9 @@
+{% if latest_posts_list %}
+    <ul>
+        {% for title in latest_posts_list %}
+            <li><a href="/car/{{ title.id }}/">{{ title.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No Post avalable</p>
+{% endif %}
