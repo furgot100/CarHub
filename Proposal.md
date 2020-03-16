@@ -22,7 +22,7 @@ CRUD the allow users to post blogs and/or images
 Start coding and finish “Skateboard” feature before beginning “Bike”.
 
 ## Bike
-Add comments. Possible CRUD for car sales? Add libary for vehicle makes and models. Possible use of API? Add authentication.
+Add comments. Possible CRUD for car sales? Add libary for vehicle makes and models. Possible use of API? Add authentication. Add design.
 
 ## Car
 Use google api to link towards youtube videos about cars.
