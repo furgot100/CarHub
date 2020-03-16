@@ -28,7 +28,7 @@ Add comments. Add design.
 Possible CRUD for car sales? Use api for car search
 
 ## Wireframes
-![Image of wireframe](Scan_0001-1.png)
+![Image of wireframe](/desktop/Scan_0001-1.png)
 ## Sign off
 **Student Name:** Francis Tsang
 
