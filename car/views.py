@@ -1,26 +1,26 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+from car.models import Post
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.http import HttpResponse, Http404
 
-from .models import Post
+
 
 # Create your views here.
 
-def index(request):
-    latest_posts_list = Post.objects.order_by('-pub_date')[:5]
-    template = loader.get_template('car/index.html')
-    context = {
-        'latest_posts_list' : latest_posts_list,
-    }
-    return HttpResponse(template.render(context, request))
+class PostList(generic.ListView):
+    model = Post
+    def get(self, request):
+        post_list = Post.objects.all()
+        context = {'post_list': post_list}
+        return render(request, 'list.html', context=context)
 
-
-def detail(request, title_id):
-    return HttpResponse("Title is %s." % title_id)
-
-def results(request, title_id):
-    response = "looking at results for %s"
-    return HttpResponse(response % title_id)
-
-def vote(request, title_id):
-    return HttpResponse("test for %s." % title_id)
+class PostDetailView(DetailView):
+    model = Post
+    
+    def get(self, request, slug):
+        try:
+            post = Post.objects.get(slug=slug)
+        except Post.DoesNotExist:
+            raise Http404("Page doesn't exsist")
+        return render(request, 'page.html', {'post': post})
