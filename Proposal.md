@@ -17,15 +17,14 @@ App to get people to share and talk about everything cars, a Facebook for Cars. 
 * Making user journey as smooth as possible
 
 ## Skateboard
-CRUD the allow users to post blogs and/or images
-
+Let users posts blogs
 Start coding and finish “Skateboard” feature before beginning “Bike”.
 
 ## Bike
-Add comments. Add design.
+Allow images on blogs
 
 ## Car
-Possible CRUD for car sales? Use api for car search
+Parts and car search
 
 ## Wireframes
 https://drive.google.com/file/d/1yy5FHTU5XkQUBQIwZSfmKlNhXh4QANJe/view?usp=sharing
