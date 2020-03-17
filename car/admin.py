@@ -1,7 +1,9 @@
 from django.contrib import admin
 
-from .models import Post, Choice
+from car.models import Post
 # Register your models here.
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug', 'created', 'modified')
 
-admin.site.register(Post)
-admin.site.register(Choice)
+
+admin.site.register(Post, PostAdmin)
