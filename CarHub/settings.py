@@ -126,8 +126,11 @@ DEFAULT_LOGOUT_URL = '/'
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
-LOGIN_REDIRECT_URL = '/'
-DEFAULT_LOGOUT_URL = '/'
+LOGIN_REDIRECT_URL = '/blog'
+LOGOUT_REDIRECT_URL = "/blog"
 
 POST_TITLE_MAX_LENGTH = 600
