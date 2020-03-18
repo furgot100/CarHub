@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'posts'
+    'posts',
+    'accounts'
 
 ]
 
@@ -117,9 +118,16 @@ USE_L10N = True
 USE_TZ = True
 
 
+LOGIN_REDIRECT_URL = '/blog'
+DEFAULT_LOGOUT_URL = '/'
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/'
+DEFAULT_LOGOUT_URL = '/'
 
 POST_TITLE_MAX_LENGTH = 600

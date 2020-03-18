@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+<body>
+    {% block content %}
+      <h1>list</h1>
+      {% if post_list %}
+      <ul>
+      {% for post in post_list %}
+        <li><a href="{{ post.slug }}">{{ post.title }}</a></li>
+      {% endfor %}
+      </ul>
+      {% else %}
+        <p>No posts</p>
+      {% endif %}
+    {% endblock %}
+  </body>
