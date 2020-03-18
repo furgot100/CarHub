@@ -10,7 +10,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="{% url 'post-list-page' %}"><i class="fas fa-fw fa-book"></i> makewiki</a>
+      <a class="navbar-brand" href="{% url 'posts:post-list-page' %}"><i class="fas fa-fw fa-book"></i> makewiki</a>
       <form class="form-inline ml-auto">
         <div class="text-white">Welcome, <strong>{{user.username}}</strong>!</div>
         {% if user.is_authenticated %}

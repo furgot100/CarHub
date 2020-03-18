@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
 # Create your views here.
-class PostList(ListView):
+class PostListView(ListView):
     model = Post
     def get(self, request):
         post_list = Post.objects.all()
@@ -36,5 +36,5 @@ class PostCreateView(CreateView):
         if form.is_valid():
             post = form.save()
             post.save()
-            return HttpResponseRedirect(reverse_lazy('posts:detail', args=[post.id]))
+            return HttpResponseRedirect(reverse_lazy('posts:post-list-page'))
         return render(request,'new.html', {'form': form})
