@@ -4,6 +4,9 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.http import HttpResponse, Http404
 from django.views.generic.edit import CreateView
+from posts.forms import PostCreateForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 
 # Create your views here.
 class PostList(ListView):
@@ -24,8 +27,14 @@ class PostDetailView(DetailView):
         return render(request, 'post.html', {'post' : post})
 
 class PostCreateView(CreateView):
-    model = Post
-    fields = Post.objects.all()
-    context = {'fields' : fields}
-    return render(request, 'new.html', context=context)
+    def get(self, request, *args, **kwargs):
+        post = {'form': PostCreateForm()}
+        return render(request, 'new.html', post)
 
+    def post(self, request, *args, **kwargs):
+        form = PostCreateForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            post.save()
+            return HttpResponseRedirect(reverse_lazy('posts:detail', args=[post.id]))
+        return render(request,'new.html', {'form': form})
