@@ -36,3 +36,4 @@ class Post(models.Model):
 
         # Call save on the superclass.
         return super(Post, self).save(*args, **kwargs)
+

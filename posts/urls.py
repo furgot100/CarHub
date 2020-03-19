@@ -1,7 +1,6 @@
 from django.urls import path
 from .views import PostCreateView, PostDetailView, PostListView, HomeView, PostDeleteView
 
-
 app_name = 'posts'
 urlpatterns = [
     path('', HomeView.as_view(), name="home"),

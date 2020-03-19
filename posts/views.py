@@ -15,7 +15,7 @@ class PostListView(ListView):
     def get(self, request):
         post_list = Post.objects.all()
         context = {'post_list': post_list}
-        return render(request, 'list.html', context=context)
+        return render(request, 'posts/list.html', context=context)
 
 class PostDetailView(DetailView):
     model = Post
@@ -25,12 +25,12 @@ class PostDetailView(DetailView):
             post = Post.objects.get(slug=slug)
         except Post.DoesNotExist:
             raise Http404("Post doesn't exist")
-        return render(request, 'post.html', {'post' : post})
+        return render(request, 'posts/post.html', {'post' : post})
 
 class PostCreateView(CreateView):
     def get(self, request, *args, **kwargs):
         post = {'form': PostCreateForm()}
-        return render(request, 'new.html', post)
+        return render(request, 'posts/new.html', post)
 
     def post(self, request, *args, **kwargs):
         form = PostCreateForm(request.POST)
@@ -38,7 +38,7 @@ class PostCreateView(CreateView):
             post = form.save()
             post.save()
             return HttpResponseRedirect(reverse_lazy('posts:post-list-page'))
-        return render(request,'new.html', {'form': form})
+        return render(request,'posts/new.html', {'form': form})
 
 
 
@@ -52,13 +52,14 @@ class HomeView(TemplateView):
 
 class PostDeleteView(DeleteView):
     model = Post
-    
+
     def get(self, request, slug):
         try:
             post = Post.objects.get(slug=slug)
         except Post.DoesNotExist:
             raise Http404("Post doesn't exist")
         return render(request, 'delete.html', {'post' : post})
+
 
 
       
