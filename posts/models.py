@@ -47,6 +47,7 @@ class Products(models.Model):
     summary = models.TextField()
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     slug = models.CharField(max_length=settings.POST_TITLE_MAX_LENGTH, blank=True, editable=False)
+    picture = models.ImageField(blank=True, null=True, upload_to='images/')
 
     def __str__(self):
         return self.title

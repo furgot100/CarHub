@@ -2,8 +2,6 @@
 {% block content %}
 <h1>{{ post.title }}</h1>
 <p>{{post.content}}</p>
-{% if post.picture != None %}
-    <img src="{{ post.picture.url }}">
-{% endif %}
+
 
 {% endblock %}

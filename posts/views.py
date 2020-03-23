@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.http import HttpResponse, Http404
 from django.views.generic.edit import CreateView
-from posts.forms import PostCreateForm
+from posts.forms import PostCreateForm, ProductCreateForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, DeleteView
@@ -79,6 +79,20 @@ class ProductDetailView(DetailView):
         except Products.DoesNotExist:
             raise Http404("Product doesn't exist")
         return render(request, 'store/item.html', {'product' : product})
+
+
+class ProductCreateView(CreateView):
+    def get(self, request, *args, **kwargs):
+        product = {'form': ProductCreateForm()}
+        return render(request, 'store/new_item.html', product)
+
+    def post(self, request, *args, **kwargs):
+        form = ProductCreateForm(request.POST)
+        if form.is_valid():
+            item = form.save()
+            item.save()
+            return HttpResponseRedirect(reverse_lazy('posts:store-list'))
+        return render(request,'store/new_item.html', {'form': form})
 
 
 

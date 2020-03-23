@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PostCreateView, PostDetailView, PostListView, HomeView, PostDeleteView, ProductListView, ProductDetailView
+from .views import PostCreateView, PostDetailView, PostListView, HomeView, PostDeleteView, ProductListView, ProductDetailView, ProductCreateView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -12,6 +12,7 @@ urlpatterns = [
     # path('<slug>/delete', PostDeleteView.as_view(), name='post-delete-page')
     path('store/', ProductListView.as_view(), name="store-list"),
     path('store/<str:slug>/', ProductDetailView.as_view(), name='store-item'),
+    path('store/new', ProductCreateView.as_view(), name='store-new'),
 ]
 
 if settings.DEBUG:
