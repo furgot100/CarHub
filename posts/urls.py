@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import PostCreateView, PostDetailView, PostListView, HomeView, PostDeleteView, ProductListView, ProductDetailView
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'posts'
 urlpatterns = [
@@ -11,3 +13,6 @@ urlpatterns = [
     path('store/', ProductListView.as_view(), name="store-list"),
     path('store/<str:slug>/', ProductDetailView.as_view(), name='store-item'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

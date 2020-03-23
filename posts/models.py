@@ -20,6 +20,7 @@ class Post(models.Model):
                                    help_text="The date and time this page was created. Automatically generated when the model saves.")
     modified = models.DateTimeField(auto_now=True,
                                     help_text="The date and time this page was updated. Automatically generated when the model updates.")
+    picture = models.ImageField(blank=True, null=True, upload_to='images/')
 
     def __str__(self):
         return self.title
