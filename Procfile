@@ -1,0 +1,1 @@
+web: gunicorn CarHub.wsgi --log-file -

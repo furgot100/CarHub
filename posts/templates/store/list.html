@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body></body>
+    <h2>list</h2>
+    {% if store_list %}
+    <ul>
+    {% for store in store_list %}
+      <ul>
+        <div class="card">
+          <div class="card-body">
+            <h2><a href="{{ store.slug }}">{{ store.title }}</a></h2>
+            <br>
+            <br>
+            {{ store.description }}
+          </div>
+        </div>
+      </ul>
+    {% endfor %}
+    </ul>
+    {% else %}
+      <p>No items</p>
+    {% endif %}   
+</body>
+{% endblock %}

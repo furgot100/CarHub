@@ -120,6 +120,7 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL = '/blog'
 DEFAULT_LOGOUT_URL = '/'
+ALLOWED_HOSTS = ['localhost', 'carhub-ft.herokuapp.com']
 
 
 # Static files (CSS, JavaScript, Images)
@@ -129,6 +130,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = '/blog'
 LOGOUT_REDIRECT_URL = "/blog"

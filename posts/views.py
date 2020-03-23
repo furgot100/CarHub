@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from posts.models import Post
+from posts.models import Post, Products
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.http import HttpResponse, Http404
@@ -15,7 +15,7 @@ class PostListView(ListView):
     def get(self, request):
         post_list = Post.objects.all()
         context = {'post_list': post_list}
-        return render(request, 'posts/list.html', context=context)
+        return render(request, 'blog/list.html', context=context)
 
 class PostDetailView(DetailView):
     model = Post
@@ -25,12 +25,12 @@ class PostDetailView(DetailView):
             post = Post.objects.get(slug=slug)
         except Post.DoesNotExist:
             raise Http404("Post doesn't exist")
-        return render(request, 'posts/post.html', {'post' : post})
+        return render(request, 'blog/post.html', {'post' : post})
 
 class PostCreateView(CreateView):
     def get(self, request, *args, **kwargs):
         post = {'form': PostCreateForm()}
-        return render(request, 'posts/new.html', post)
+        return render(request, 'blog/new.html', post)
 
     def post(self, request, *args, **kwargs):
         form = PostCreateForm(request.POST)
@@ -38,8 +38,7 @@ class PostCreateView(CreateView):
             post = form.save()
             post.save()
             return HttpResponseRedirect(reverse_lazy('posts:post-list-page'))
-        return render(request,'posts/new.html', {'form': form})
-
+        return render(request,'blog/new.html', {'form': form})
 
 
 class HomeView(TemplateView):
@@ -50,6 +49,8 @@ class HomeView(TemplateView):
         context['title'] = "CarHub"
         return context
 
+
+
 class PostDeleteView(DeleteView):
     model = Post
 
@@ -59,6 +60,25 @@ class PostDeleteView(DeleteView):
         except Post.DoesNotExist:
             raise Http404("Post doesn't exist")
         return render(request, 'delete.html', {'post' : post})
+
+# Parts/Store
+
+class ProductListView(ListView):
+    model = Products
+    def get(self, request):
+        store_list = Products.objects.all()
+        context = {'store_list': store_list}
+        return render(request, 'store/list.html', context=context)
+
+class ProductDetailView(DetailView):
+    model = Products
+
+    def get(self, request, slug):
+        try:
+            product = Products.objects.get(slug=slug)
+        except Products.DoesNotExist:
+            raise Http404("Product doesn't exist")
+        return render(request, 'store/item.html', {'product' : product})
 
 
 

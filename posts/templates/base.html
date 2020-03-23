@@ -27,6 +27,7 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'posts:post-list-page' %}">CarHub</a>
+      <a href="{% url 'posts:store-list' %}"
       <form class="form-inline ml-auto">
         <div class="text-white">Welcome <strong>{{user.username}}</strong>!</div>
         {% if user.is_authenticated %}
