@@ -6226,7 +6226,7 @@ License - nucleoapp.com/license/
 }
 
 .card .card-body .card-category~.card-title {
-  margin-top: 5px;
+  margin-top: 100px;
 }
 
 .card .card-text {
@@ -6336,7 +6336,7 @@ License - nucleoapp.com/license/
   min-height: 280px;
   padding-top: 40px;
   padding-bottom: 40px;
-  max-width: 440px;
+  max-width: 500px;
   margin: 0 auto;
   text-align: center;
 }
@@ -6528,7 +6528,7 @@ License - nucleoapp.com/license/
 }
 
 .card-plain .card-body {
-  padding-left: 5px;
+  padding-left: 590px;
   padding-right: 5px;
 }
 
@@ -6537,12 +6537,12 @@ License - nucleoapp.com/license/
 }
 
 .card-register {
-  background-color: #FF8F5E;
+  background-color: #51cbce;
   border-radius: 8px;
   color: #fff;
-  max-width: 350px;
-  margin: 20px 0 70px;
-  min-height: 400px;
+  max-width: 1400px;
+  margin: 100px 0 120px;
+  min-height: 100px;
   padding: 30px;
 }
 

@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="card card-register">
     <h3>Log In <small class="text-muted">to create your own wiki pages!</small></h3>
-    <hr>
+    <br>
     <div class="row">
         <div class="col">
             {% if form.errors %}
@@ -33,11 +34,28 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-8">
-                        <input type="submit" value="login" class="btn btn-success">
+                        <input type="submit" value="login" class="btn btn-info">
                         <input type="hidden" name="next" value="{{ next }}">
                     </div>
                 </div>
-            </form>
+            </form> 
         </div>
     </div>
+</div>
 {% endblock %}
+
+<div class="filter">
+    <div class="row">
+      <div class="col-lg-4 ml-auto mr-auto">
+        <div class="card card-register">
+          <h3 class="title mx-auto">Welcome!</h3>
+          <form class="register-form" method="POST">
+            <font color="black">
+              {% csrf_token %}
+              {{ form.as_p }}
+            </font>
+            <button class="btn btn-info btn-block btn-round">Register</button>
+          </form>
+        </div>
+      </div>
+  </div>

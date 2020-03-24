@@ -2,8 +2,17 @@
 
 
 {% block content %}
-<h1>{{ product.title }}</h1>
-<p>{{ product.description }}</p>
-<p>{{product.summary}}</p>
+
+<div class="card">
+    <div class="card-body">
+        <h1>{{ product.title }}</h1>
+        <p>${{ product.price }}</p>
+        <img src="{{ product.picture.url }}">
+        <br>
+        <br>
+        <p>{{product.summary}}</p>
+        <footer>Listed by {{product.author}}</footer>
+    </div>
+</div>
 
 {% endblock %}
