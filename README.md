@@ -20,3 +20,7 @@ From there run
 python3 manage.py runserver
 ```
 And head to the url "/blog" as the home page's design isn't finished
+## Problems
+Haven't had static files hosted on the live site for now, will do in the future 
+### Live site
+https://github.com/furgot100/CarHub
