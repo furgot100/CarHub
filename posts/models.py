@@ -58,6 +58,28 @@ class Products(models.Model):
         return super(Products, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        """ Returns a fully-qualified path for a page (/droxey/my-new-wiki-page). """
+        """ Returns a fully-qualified path for a page"""
         path_components = {'slug': self.slug}
         return reverse('store-item', kwargs=path_components)
+
+
+class Event(models.Model):
+    title = models.CharField(max_length=120)
+    location = models.CharField(max_length=100)
+    description = models.TextField(blank = True, null=True)
+    slug = models.CharField(max_length=settings.POST_TITLE_MAX_LENGTH, blank=True, editable=False)
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.slug = slugify(self.title, allow_unicode=True)
+        return super(Event, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        """ Returns a fully-qualified path for a page"""
+        path_components = {'slug': self.slug}
+        return reverse('event-detail', kwargs=path_components)   
+

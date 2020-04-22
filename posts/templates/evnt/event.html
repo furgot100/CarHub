@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1>{{ event.title }}</h1>
+        <br>
+        <p>{{ event.location}}</p>
+        <br>
+        <p>{{ event.description}}</p>
+        <br>
+        
+        <footer>Created by {{ event.author }}</footer>
+    </div>
+</div>
+{% endblock %}

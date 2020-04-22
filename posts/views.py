@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from posts.models import Post, Products
+from posts.models import Post, Products, Event
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.http import HttpResponse, Http404
 from django.views.generic.edit import CreateView
-from posts.forms import PostCreateForm, ProductCreateForm
+from posts.forms import PostCreateForm, ProductCreateForm, EventCreateForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, DeleteView
@@ -93,6 +93,39 @@ class ProductCreateView(CreateView):
             item.save()
             return HttpResponseRedirect(reverse_lazy('posts:store-list'))
         return render(request,'store/new_item.html', {'form': form})
+
+# Events
+class EventListView(ListView):
+    model = Event
+    def get(self, request):
+        event_list = Event.objects.all()
+        context = {'event_list': event_list}
+        return render(request, 'evnt/list.html', context=context)
+
+class EventDetailView(DetailView):
+    model = Event
+
+    def get(self, request, slug):
+        try:
+            event = Event.objects.get(slug=slug)
+        except Products.DoesNotExist:
+            raise Http404("Product doesn't exist")
+        return render(request, 'evnt/event.html', {'event' : event})
+
+class EventCreateView(CreateView):
+    def get(self, request, *args, **kwargs):
+        event = {'form': EventCreateForm()}
+        return render(request, 'evnt/new_event.html', event)
+
+    def post(self, request, *args, **kwargs):
+        form = EventCreateForm(request.POST)
+        if form.is_valid():
+            item = form.save()
+            item.save()
+            return HttpResponseRedirect(reverse_lazy('posts:event-list'))
+        return render(request,'evnt/new_event.html', {'form': form})
+
+
 
 
 

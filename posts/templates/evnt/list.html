@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+  <div class="jumbotron">
+    <h1 class="display-4">Events</h1>
+    <p class="lead">Events hosted by our users.</p>
+    <hr class="my-4">
+      <p>To create a hist click to button below or login or create an account</p>
+      <form class="form-inline ml-auto">
+        <br>
+        {% if user.is_authenticated %}
+          <a href="{% url 'posts:event-new' %}" class="btn btn-info ml-2">New Event</a>
+        {% endif %}
+      </form>
+    <hr>
+  </div>
+      <br>
+    {% if event_list %}
+    {% for event in event_list %}
+      <ul
+        <div class="card">
+          <div class="card-body" text="center">
+            <h2><a href="{{ event.slug }}">{{ event.title }}</a></h2>
+            <br>
+          </div>
+        </div>
+      </ul>
+    {% endfor %}
+    {% else %}
+      <p>No posts</p>
+    {% endif %}   
+</body>
+{% endblock %}
